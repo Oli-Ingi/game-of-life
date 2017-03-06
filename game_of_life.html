@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Game of Life</title>
+    <link rel="stylesheet" href="style.css">
+    <script id="vertex-shader" type="x-shader/x-vertex">
+      attribute vec4 vPosition;
+      uniform mat4 transformer;
+      uniform mat4 projection;
+
+      attribute vec4 vColor;
+      varying vec4 fColor;
+
+      void main() {
+        gl_Position = projection * transformer * vPosition;
+        fColor = vColor;
+      }
+    </script>
+    <script id="fragment-shader" type="x-shader/x-fragment">
+      precision mediump float;
+      varying vec4 fColor;
+
+      void main() {
+        gl_FragColor = fColor;
+      }
+    </script>
+    <script src="libs/initShaders.js" type="text/javascript"></script>
+    <script src="libs/MV.js" type="text/javascript"></script>
+    <script src="libs/webgl-utils.js" type="text/javascript"></script>
+    <script src="game_of_life.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1 id="game-title">Game of Life</h1>
+      <canvas id="gl-canvas"></canvas>
+      <div class="control-group">
+        <div>
+          <h2 class="subtitle">Instructions</h2>
+          <p>Click and drag on screen to rotate the grid.</p>
+          <p>Use the up/down arrow keys or the mouse-wheel to zoom.</p>
+          <p>
+            Press "Set Conditions" to apply changes and reset
+            the game.
+          </p>
+        </div>
+        <div class="conditions-group">
+          <h2 id="conditions-title" class="subtitle">Initial conditions</h2>
+          <div class="range-set">
+            <label for="rowCount">Cells per row: <span id="cells-row">10</span></label>
+            <input type="range" value="10" id="rowCount" min="3" max="20">
+          </div>
+          <div class="range-set">
+            <label for="lifeOdds">Cells alive: <span id="cells-life">25</span>%</label>
+            <input type="range" value="25" id="lifeOdds">
+          </div>
+        </div>
+        <div class="buttons-group">
+          <button type="button" class="btn" id="freeze-btn">Start</button>
+          <button type="button" class="btn" id="reset-btn">Set Conditions</button>
+        </div>
+        <div class="progress-group">
+          <h2 class="subtitle">Game state</h2>
+          <div class="state-set">
+            <div class="descriptions">
+              <p>Total:</p>
+              <p>Alive:</p>
+              <p>Dead:</p>
+            </div>
+            <div class="numbers">
+              <p id="total-cells">0</p>
+              <p id="alive-cells">0</p>
+              <p id="dead-cells">0</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  position: relative;
+}
+
+#game-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 3em;
+  font-family: Consolas;
+}
+
+.control-group {
+  position: absolute;
+  top: 25px;
+  left: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 0px 15px 15px 15px;
+  color: white;
+  border-radius: 5px;
+  border: 5px outset rgba(255, 255, 255, 0.4);
+  width: 300px;
+  font-family: Consolas;
+  margin-left: 20px;
+}
+
+.conditions-group {
+  border-bottom: 2px dashed rgba(255, 255, 255, 0.4);
+  border-top: 2px solid rgba(255, 255, 255, 0.4);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+}
+
+.range-set {
+  display: flex;
+  justify-content: space-between;
+}
+
+.subtitle { text-align: center; }
+
+.buttons-group {
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn {
+  background-color: rgba(0,0,200, 0.5);
+  padding: 4px 10px;
+  color: white;
+  border: 3px outset rgba(255,255,255,0.8);
+  font-size: 18px;
+  font-weight: bold;
+  font-family: Consolas;
+  outline: 0 !important;
+}
+
+#freeze-btn {
+  width: 90px;
+}
+
+.progress-group {
+  border-top: 2px solid rgba(255, 255, 255, 0.4);
+  display: none;
+}
+
+.state-set {
+  display: flex;
+  padding: 0 10%;
+  justify-content: space-around;
+
+}
+
+.state-set > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.numbers { font-weight: bold; }
+
+.state-set p { margin: 5px; }
+
+canvas {
+  width: 100vw;
+  height: 100vh;
+}
